@@ -20,7 +20,7 @@ jobs:
 
     # job 中需要执行一系列任务
     steps:
-      # 在 github 工作空间中拉取项目代码, 以便后续操作(npm i, npm run build....)
+      # 相当于 git clone xx && cd xx
       - uses: actions/checkout@v3
 
       - name: 执行单行脚本
