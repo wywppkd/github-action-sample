@@ -1,0 +1,32 @@
+name: CI
+
+# workflow 触发条件
+on:
+  # 当 master 分支 push 或 pr 时触发
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  # 点击 workflow 面板的按钮触发
+  workflow_dispatch:
+
+# 一个 workflow 由多个 jobs 组成
+jobs:
+  # 配置一个job
+  build-on-linux:
+    # 指定 Runner
+    runs-on: ubuntu-latest
+
+    # job 中需要执行一系列任务
+    steps:
+      # 在 github 工作空间中拉取项目代码, 以便后续操作(npm i, npm run build....)
+      - uses: actions/checkout@v3
+
+      - name: 执行单行脚本
+        run: echo Hello
+
+      - name: 执行多行脚本
+        run: |
+          echo 美好的事情正在发生,
+          echo 美好的事件已经发生. 日期: date
